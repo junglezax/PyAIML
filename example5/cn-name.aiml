@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<aiml version="1.0">
+
+<meta name="author" content="nullspace"/>
+<meta name="language" content="zh"/>
+
+<category>
+<pattern>我叫*</pattern>
+<template>
+  <think><set name="name"><star/></set></think>
+  你好，<star/>
+</template>
+</category>
+
+<category>
+<pattern>你是谁</pattern>
+<template>
+  我是小石头，笨笨的聊天机器人
+</template>
+</category>
+
+<category>
+<pattern>再见</pattern>
+<template>
+  Bye, <get name="name"/> 
+</template>
+</category>
+
+<category>
+<pattern>我是谁</pattern>
+<template>
+  <condition name="name">
+    <li value="">你没告诉过我啊</li>
+    <li>你是<get name="name"/></li>
+  </condition>
+</template>
+</category>
+
+
+<category>
+<pattern>*</pattern>
+<template>
+  <condition name="name">
+    <li value="">呵呵.你叫什么名字</li>
+    <li>不错</li>
+  </condition>
+</template>
+</category>
+
+</aiml>
