@@ -1,0 +1,10 @@
+<aiml version="1.0">
+
+<category>
+<pattern>LOGIN *</pattern>
+<template>
+  <system>python login.py <star/></system>
+</template>
+</category>
+
+</aiml>
