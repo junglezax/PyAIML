@@ -5,8 +5,8 @@
 <template>
 
 <!-- Load chinese AIML set -->
+<!-- <learn>other.aiml</learn> -->
 <learn>cn-name.aiml</learn>
-<learn>other.aiml</learn>
 
 </template>
 </category>

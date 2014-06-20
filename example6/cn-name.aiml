@@ -6,10 +6,28 @@
 <meta name="language" content="zh"/>
 
 <category>
+<pattern>*</pattern>
+<template>
+  <condition name="name">
+    <li value="">呵呵.你叫什么名字</li>
+    <li>不错</li>
+  </condition>
+</template>
+</category>
+
+<category>
 <pattern>我叫*</pattern>
 <template>
   <think><set name="name"><star/></set></think>
   你好，<star/>
+</template>
+</category>
+
+<category>
+<pattern>我*岁</pattern>
+<template>
+  <think><set name="age"><star/></set></think>
+  呵呵，<star/>岁还很年轻啊
 </template>
 </category>
 
@@ -37,13 +55,12 @@
 </template>
 </category>
 
-
 <category>
-<pattern>*</pattern>
+<pattern>我的年龄？</pattern>
 <template>
-  <condition name="name">
-    <li value="">呵呵.你叫什么名字</li>
-    <li>不错</li>
+  <condition name="age">
+    <li value="">你没告诉过我啊</li>
+    <li>你<get name="age"/>岁了</li>
   </condition>
 </template>
 </category>
