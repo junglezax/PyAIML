@@ -41,22 +41,22 @@ class Reader(threading.Thread):
             except:
                 break
             if(data):
-                string = bytes.decode(data, encoding)
-                print string
+                ss = bytes.decode(data, encoding)
+                print '>>>>>>>%s: %s' % (self.sessionId, ss)
                 
-                if string == '88':
+                if ss == '88':
                     self.client.send('88')
                     break
-                elif string == 'shutdown':
+                elif ss == 'shutdown':
                     self.listener.shutdown()
                     break
-                elif string[:len(LOGIN_FLAG)] == LOGIN_FLAG:
-                    self.login(string[len(LOGIN_FLAG):])
+                elif ss[:len(LOGIN_FLAG)] == LOGIN_FLAG:
+                    self.login(ss[len(LOGIN_FLAG):])
                     continue
 
-                string = self.listener.bot.say(string, self.sessionId)
+                ss = self.listener.bot.say(ss, self.sessionId)
                 try:
-                    s1 = string.encode(encoding)
+                    s1 = ss.encode(encoding)
                     self.client.send(s1)
                 except Exception, msg:
                     print msg
@@ -69,14 +69,14 @@ class Reader(threading.Thread):
     def readline(self):
         rec = self.inputs.readline()
         if rec:
-            string = bytes.decode(rec, encoding)
-            if len(string)>2:
-                string = string[0:-2]
+            ss = bytes.decode(rec, encoding)
+            if len(ss)>2:
+                ss = ss[0:-2]
             else:
-                string = ' '
+                ss = ' '
         else:
-            string = False
-        return string
+            ss = False
+        return ss
 
 class Listener(threading.Thread):
     def __init__(self, port, bot):

@@ -10,4 +10,5 @@ python BotClient.py --yourhost localhost --port yourport -l yourusername
 你是谁
 我38岁了
 我的年龄？
-
+88(88退出)
+shutdown(shutdown关闭服务器)
