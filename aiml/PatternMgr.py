@@ -96,6 +96,10 @@ class PatternMgr:
                 # TODO: make sure words contains only legal characters
                 # (alphanumerics,*,_)
 
+                pattern = string.upper(pattern)
+                that = string.upper(that)
+                topic = string.upper(topic)
+                
                 # Navigate through the node tree to the template's location, adding
                 # nodes if necessary.
                 node = self._root
