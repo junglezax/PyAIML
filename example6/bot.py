@@ -12,7 +12,7 @@ class Bot:
         self.k = aiml.Kernel(sessionStore=self.db)
         self.k.learn("cn-startup.xml")
         self.k.respond("load aiml cn")
-        print self.k._brain._root.keys()
+        #print self.k._brain._root.keys()
         
     def login(self, username):
         userList = self.db.keys()

@@ -5,10 +5,10 @@ python BotServer.py
 Client:
 python BotClient.py --yourhost localhost --port yourport -l yourusername
 
-ÎÒ½ĞÕÅÈı
-ÎÒÊÇË­
-ÄãÊÇË­
-ÎÒ38ËêÁË
-ÎÒµÄÄêÁä£¿
-88(88ÍË³ö)
-shutdown(shutdown¹Ø±Õ·şÎñÆ÷)
+æˆ‘å«å¼ ä¸‰
+æˆ‘æ˜¯è°
+ä½ æ˜¯è°
+æˆ‘38å²äº†
+æˆ‘çš„å¹´é¾„ï¼Ÿ
+88(88é€€å‡º)
+shutdown(shutdownå…³é—­æœåŠ¡å™¨)
