@@ -6,3 +6,4 @@ test.py
 dist
 build
 *.egg-info
+/example6/session.db

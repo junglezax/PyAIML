@@ -7,19 +7,39 @@ import sys
 import os
 import signal
 import time
+import argparse
+import platform
 
 pid = os.getpid()
 
-HOST = "localhost"  #服务其地址
-PORT = 9011       #服务器端口
-BUFFERSIZE = 1024
+sessionId = '_global'
+HOST = "localhost"
+PORT = 9011
 ADDR = (HOST, PORT)
-TCPClient = None
-TCPClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-TCPClient.connect(ADDR) #连接服务器
+BUFFERSIZE = 1024
 
-sessionId = 'zs' #sys.argv[1]
+encoding = 'utf-8'
 LOGIN_FLAG = 'LOGIN '
+
+parser = argparse.ArgumentParser(description='Bot Client')
+parser.add_argument('--host', 
+                    default="localhost",
+                   help='host name')
+parser.add_argument('--port', type=int,
+                   default=9011,
+                   help='port')
+parser.add_argument('-l',
+                   default='_global',
+                   help='username')
+
+args = parser.parse_args()
+
+sessionId = args.l
+HOST = args.host
+PORT = args.port
+
+TCPClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+TCPClient.connect(ADDR)
 
 def close():
     print "client close"
@@ -40,10 +60,14 @@ class BotClientWriter(threading.Thread):
                 senddata = raw_input("input:")
             except: # KeyboardInterrupt, EOFError
                 close()
-
+            
+            if platform.system() == 'Windows':
+                senddata = senddata.decode('gbk')
+            senddata = senddata.encode('utf-8')
+            
             if senddata:
                 try:
-                    TCPClient.send('%s' % (senddata))  #发送数据
+                    TCPClient.send(senddata)
                 except:
                     close()
             time.sleep(0.1) 
@@ -55,13 +79,13 @@ class BotClientReader(threading.Thread):
     def run(self):
         while True:
             try:
-                recvdata = TCPClient.recv(BUFFERSIZE)    #接受数据
+                recvdata = TCPClient.recv(BUFFERSIZE)
             except:
                 close()
-            curTime = datetime.datetime.now()  #获得当前时间 格式是：datetime.datetime(2012, 3, 13, 1, 29, 51, 872000)
-            curTime = curTime.strftime('%Y-%m-%m %H:%M:%S')     #转换格式
-            recvdata = recvdata.decode('utf-8')
-            print "%s  %s" % (HOST, curTime), recvdata
+            #curTime = datetime.datetime.now()
+            #curTime = curTime.strftime('%Y-%m-%m %H:%M:%S')
+            recvdata = recvdata.decode(encoding)
+            print recvdata
             if recvdata == '88':
                 close()
 

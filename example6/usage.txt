@@ -1,0 +1,13 @@
+Server:
+python BotServer.py
+
+
+Client:
+python BotClient.py --yourhost localhost --port yourport -l yourusername
+
+我叫张三
+我是谁
+你是谁
+我38岁了
+我的年龄？
+

@@ -13,7 +13,7 @@ pid = os.getpid()
 
 LOGIN_FLAG = 'LOGIN '
 
-encoding = 'gbk' #'utf-8'
+encoding = 'utf-8'
 BUFSIZE = 1024
 
 def onsignal_term(a,b):
@@ -56,7 +56,7 @@ class Reader(threading.Thread):
 
                 string = self.listener.bot.say(string, self.sessionId)
                 try:
-                    s1 = string.encode('utf-8')
+                    s1 = string.encode(encoding)
                     self.client.send(s1)
                 except Exception, msg:
                     print msg
