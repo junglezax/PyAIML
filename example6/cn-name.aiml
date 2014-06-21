@@ -31,6 +31,35 @@
 </category>
 
 <category>
+<pattern>我是*</pattern>
+<template>
+  <srai>我叫<star/></srai>
+</template>
+</category>
+
+<category>
+<pattern>我的名字是*</pattern>
+<template>
+  <srai>我叫<star/></srai>
+</template>
+</category>
+
+<category>
+<pattern>我名叫*</pattern>
+<template>
+  <srai>我叫<star/></srai>
+</template>
+</category>
+
+<category>
+<pattern>*</pattern>
+<that>*你叫什么名字</that>
+<template>
+  <srai>我叫<star/></srai>
+</template>
+</category>
+
+<category>
 <pattern>我*岁</pattern>
 <template>
   <think><set name="age"><star/></set></think>

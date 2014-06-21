@@ -860,6 +860,7 @@ class Kernel:
         newInput = ""
         for e in elem[2:]:
             newInput += self._processElement(e, sessionID)
+        newInput = Utils.sentences(newInput)[0]
         return self._respond(newInput, sessionID)
 
     # <star>
